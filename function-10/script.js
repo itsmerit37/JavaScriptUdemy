@@ -168,8 +168,46 @@ const addTaxF=function(rate)
 const addVat2=addTaxF(.3)
 console.log(addVat(100));
 
+const poll={
+    question:'What is your favourite language?',
+    options:['0:Java Script','1:Python','2:Rust','3:c++'],
+    answer:new Array(4).fill(0),
+     registerNewAnswer()
+     {
+       const answer=Number(
+        prompt(`${this.question}\n${this.options.join('\n')}\n(Write option number)`
+   )
+    ) ;    
+       console.log(answer);    
+       //Register Answer
+       typeof answer==='number' && answer<this.answer.length && this.answer[answer]++
+       this.displayResult()
+       this.displayResult('string')            
+     } ,
+     displayResult(type= 'array')
+     {
+        if(type=== 'array')
+        {
+            console.log(this.answer);
+            
+        } else if (type=== 'string')
+        {
+          console.log(`Poll results are ${this.answer.join(', ')}`);
+          
+        }
+     }   
+    }
+    //poll.registerNewAnswer()
+    
+    document.querySelector('.poll').addEventListener('click',poll.registerNewAnswer.bind(poll));
+
+    poll.displayResult.call(
+        {
+            answer:[5,2,3]
+        },
+        'string'
+    );
 
 
+    
 
-
- 
