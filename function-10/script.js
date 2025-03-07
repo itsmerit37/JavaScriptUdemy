@@ -97,7 +97,7 @@ const lufthasa={
     iataCode:'LH',
     bookings:[],
     book(fightNum,name){
-        console.log(`${name} booked a seat on ${this.airline} fight ${this.iataCode}${fightNum}`);
+        //console.log(`${name} booked a seat on ${this.airline} fight ${this.iataCode}${fightNum}`);
         this.bookings.push({ flight: `${this.iataCode}${fightNum}`, name})
         
     }
@@ -141,9 +141,9 @@ sameFlight('Singh')
 lufthasa.planes=300
 lufthasa.buyPlane=function()
 {
-    console.log(this);
+  //  console.log(this);
     this.planes++
-    console.log(this.planes);
+   // console.log(this.planes);
     
 }
 // document.querySelector('.buy').addEventListener('click',lufthasa.buyPlane.bind(lufthasa));
@@ -151,7 +151,7 @@ lufthasa.buyPlane=function()
 //partial application
 
 const addTax=(rate,value)=>value+value*rate;
-console.log(addTax(.1,200));
+//console.log(addTax(.1,200));
 
 //bind(x,y)--- here x always point to this
 
@@ -166,7 +166,7 @@ const addTaxF=function(rate)
     }
 }
 const addVat2=addTaxF(.3)
-console.log(addVat(100));
+//console.log(addVat(100));
 
 const poll={
     question:'What is your favourite language?',
@@ -178,7 +178,7 @@ const poll={
         prompt(`${this.question}\n${this.options.join('\n')}\n(Write option number)`
    )
     ) ;    
-       console.log(answer);    
+      // console.log(answer);    
        //Register Answer
        typeof answer==='number' && answer<this.answer.length && this.answer[answer]++
        this.displayResult()
@@ -192,7 +192,7 @@ const poll={
             
         } else if (type=== 'string')
         {
-          console.log(`Poll results are ${this.answer.join(', ')}`);
+          //console.log(`Poll results are ${this.answer.join(', ')}`);
           
         }
      }   
@@ -207,6 +207,44 @@ const poll={
         },
         'string'
     );
+
+    const runOnce=function()
+    {
+        console.log('This will never run again');
+        
+    }
+    runOnce();
+
+
+    (function ()
+    {
+        console.log('this will never run again 2');
+        
+    }
+    )();
+
+   // () if fn name is not define
+
+    (()=>
+    {
+        console.log('this will never run again 3');
+
+    })();
+
+    const secureBooking=function()
+    {
+        let passengerCount=0;
+        return function ()
+        {
+            passengerCount ++
+            console.log(`${passengerCount} passengers`);
+            
+        }
+    }
+    const booker=secureBooking();
+    booker()
+    booker()
+    booker()
 
 
     
