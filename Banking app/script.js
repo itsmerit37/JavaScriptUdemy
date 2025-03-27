@@ -562,3 +562,12 @@ console.log(uniqueActivities);
 
 
 
+setTimeout(() => {
+  console.log('Here is your pizza 🍕');
+}, 3000);
+
+setInterval(()=>
+{
+  const date=new Date();
+  console.log(date);
+},1000)
